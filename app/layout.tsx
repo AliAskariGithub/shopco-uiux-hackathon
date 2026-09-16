@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   verification: {
-    google: "r2WPUKMX4DZtyfc_JaPMa1b8Skk5M1OdUwGDWxDZ1to",
+    google: "r2WPUKMX4DZTyfc_JaPMa1b8Skk5M1OdUwGDWxDZ1to",
   },
   openGraph: {
     title: "SHOP.CO | Find Clothes That Match Your Style",

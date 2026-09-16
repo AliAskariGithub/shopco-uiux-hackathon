@@ -114,7 +114,7 @@ The platform has been audited and engineered for optimal search engine visibilit
 ### 1. Google Search Console Verification
 Configured directly in the global application metadata:
 ```html
-<meta name="google-site-verification" content="r2WPUKMX4DZtyfc_JaPMa1b8Skk5M1OdUwGDWxDZ1to" />
+<meta name="google-site-verification" content="r2WPUKMX4DZTyfc_JaPMa1b8Skk5M1OdUwGDWxDZ1to" />
 ```
 
 ### 2. Search Directives: `robots.txt` & `sitemap.xml`
