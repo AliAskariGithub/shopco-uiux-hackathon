@@ -1,96 +1,141 @@
+import React from "react";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import Link from "next/link";
+import { Sparkle } from "lucide-react";
+
+const brandLogos = [
+  { name: "Versace", src: "/comp-logo-1.png", width: 160 },
+  { name: "Zara", src: "/comp-logo-2.png", width: 120 },
+  { name: "Gucci", src: "/comp-logo-3.png", width: 160 },
+  { name: "Prada", src: "/comp-logo-4.png", width: 160 },
+  { name: "Calvin Klein", src: "/comp-logo-5.png", width: 180 },
+];
 
 const Hero = () => {
   return (
-    <>
-      <section className="max-h-full py-16 bg-gray-50">
-        <div className="container flex flex-col items-center justify-between px-6 mx-auto text-center md:flex-row md:text-left">
-          {/* Hero Text */}
-          <div className="relative z-10 flex flex-col items-start justify-center max-w-lg">
-            <h1 className="mb-4 text-3xl font-extrabold leading-tight md:text-4xl lg:text-7xl w-max">
-              FIND CLOTHES
-            </h1>
-            <h1 className="mb-4 -mt-2 text-3xl font-extrabold leading-tight md:text-4xl lg:text-7xl w-max">
-              THAT MATCHES
-            </h1>
-            <h1 className="mb-6 -mt-2 text-3xl font-extrabold leading-tight md:text-4xl lg:text-7xl w-max">
-              YOUR STYLE
+    <section className="relative overflow-hidden bg-[#F2F0F1] pt-6 sm:pt-10 lg:pt-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Hero Left Column (Copy & CTAs) */}
+          <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center text-left z-10 pb-6 lg:pb-16">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black font-bold-1 tracking-tight text-black leading-[1.08] uppercase mb-4 sm:mb-6">
+              Find Clothes That Match Your Style
             </h1>
 
-            <p className="mb-6 text-sm text-gray-600 md:text-base">
-              Browse through our diverse range of meticulously crafted garments,
-              designed to bring out your individuality and cater to your sense
-              of style.
+            <p className="text-sm sm:text-base text-zinc-600 max-w-xl leading-relaxed mb-6 sm:mb-8">
+              Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.
             </p>
 
-            <div className="flex justify-center w-full md:justify-start">
-              <Link href={"/Product"}>
-                <Button
-                  variant="default"
-                  className="w-full px-6 py-2 text-xs rounded-full md:w-auto md:text-sm"
-                >
-                  Shop Now
-                </Button>
+            {/* Shop Now CTA */}
+            <div className="mb-10 sm:mb-12">
+              <Link
+                href="/Product"
+                className="group relative inline-flex items-center justify-center w-full sm:w-auto px-10 py-4 bg-black text-white font-bold text-sm sm:text-base rounded-full hover:bg-zinc-800 active:scale-95 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden"
+              >
+                <span className="relative z-10">Shop Now</span>
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-in-out" />
               </Link>
             </div>
+
+            {/* Stats Counter Row */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-4 border-t border-zinc-200/80 max-w-lg">
+              <div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-bold-1 text-black">
+                  200+
+                </div>
+                <div className="text-xs sm:text-sm text-zinc-500 font-medium">
+                  International Brands
+                </div>
+              </div>
+              <div className="border-l border-zinc-200/80 pl-4 sm:pl-8">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-bold-1 text-black">
+                  2,000+
+                </div>
+                <div className="text-xs sm:text-sm text-zinc-500 font-medium">
+                  High-Quality Products
+                </div>
+              </div>
+              <div className="border-l border-zinc-200/80 pl-4 sm:pl-8">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-bold-1 text-black">
+                  30,000+
+                </div>
+                <div className="text-xs sm:text-sm text-zinc-500 font-medium">
+                  Happy Customers
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Hero Image */}
-          <Image
-            src="https://s3-alpha-sig.figma.com/img/b26f/ea69/ccfd8aa5825862cdb9604a4fb4930464?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZdDO3aGizO-wZt5YOgeQ~J6YYZ5VPfIEMLyM1FQtcOLXbkHRhZoDLkxD3IcS6wcRkTLoITyuV6Q9DHHg8C1jH0dC3riWszZeeI1C6~NdZYOHGHg3TCY6vwZHHtAXr1q6dITGpLqdoLnh7wwk5~HvaXn28Q3o~6fJC1TjLeN6p-vPmqU8uxbxbrLDz8McmAqJlR-rODizOep0o9-hk0wI8tA2F2cKWyawKk51pQpqeCFhT2Vy~LMy8x49dM3OqEdoH7GDwaVjXNHNDUISgTHqR5R3aGk7UvDOC2~EgVEiesdJCpR4jmdbZ~YrQQZ9Vxe~-Av7tVaozmJ0GLt15v4uUg__"
-            alt="hero"
-            width={1000}
-            height={1000}
-            className="w-auto md:w-[500px] -ml-0 md:-ml-10 mt-8 md:mt-0"
-          />
-        </div>
+          {/* Hero Right Column (Hero Image with Decorative Sparkles) */}
+          <div className="lg:col-span-6 xl:col-span-6 relative flex items-end justify-center lg:justify-end -mb-6 sm:-mb-10 lg:-mb-16">
+            {/* Small decorative sparkle */}
+            <div className="absolute top-1/3 left-4 sm:left-6 z-10 animate-pulse pointer-events-none">
+              <Sparkle className="w-7 h-7 sm:w-10 sm:h-10 text-black fill-black" />
+            </div>
 
-        {/* Footer Section */}
-        <footer className="relative z-10 py-4 bg-black">
-          <div className="container flex items-center justify-center w-full px-4 mx-auto text-center text-white">
-            <div className="grid w-full grid-cols-3 gap-6 lg:grid-cols-5">
+            {/* Large decorative sparkle */}
+            <div className="absolute top-2 sm:top-4 right-4 sm:right-6 z-10 animate-pulse pointer-events-none">
+              <Sparkle className="w-11 h-11 sm:w-16 sm:h-16 text-black fill-black" />
+            </div>
+
+            <div className="relative w-full max-w-[500px] sm:max-w-[620px] lg:max-w-[760px] xl:max-w-[850px] h-[480px] sm:h-[600px] lg:h-[740px] xl:h-[820px] flex items-end justify-center lg:justify-end">
               <Image
-                src="/comp-logo-1.png"
-                alt="Company Logo 1"
-                width={1000}
-                height={1000}
-                className="w-auto"
-              />
-              <Image
-                src="/comp-logo-2.png"
-                alt="Company Logo 2"
-                width={1000}
-                height={1000}
-                className="w-auto"
-              />
-              <Image
-                src="/comp-logo-3.png"
-                alt="Company Logo 3"
-                width={1000}
-                height={1000}
-                className="w-auto"
-              />
-              <Image
-                src="/comp-logo-4.png"
-                alt="Company Logo 4"
-                width={1000}
-                height={1000}
-                className="w-auto"
-              />
-              <Image
-                src="/comp-logo-5.png"
-                alt="Company Logo 5"
-                width={1000}
-                height={1000}
-                className="w-auto"
+                src="/hero-models-transparent.png"
+                alt="Find clothes that match your style - Models wearing modern street fashion"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 60vw"
+                className="object-contain object-bottom origin-bottom scale-[1.18] sm:scale-[1.26] lg:scale-[1.38] xl:scale-[1.44] transition-transform duration-700 hover:scale-[1.42] lg:hover:scale-[1.48]"
               />
             </div>
           </div>
-        </footer>
-      </section>
-    </>
+        </div>
+      </div>
+
+      {/* Brand Logos Strip (Continuous moving right to left marquee) */}
+      <div id="brand" className="relative z-20 w-full bg-black py-8 sm:py-10 mt-6 overflow-hidden border-t border-zinc-800">
+        <div className="flex w-max animate-marquee hover:[animation-play-state:paused] gap-12 sm:gap-20 items-center">
+          {/* First set of logos */}
+          {brandLogos.map((logo, idx) => (
+            <div key={`brand-1-${idx}`} className="flex-shrink-0 flex items-center justify-center px-4">
+              <Image
+                src={logo.src}
+                alt={logo.name}
+                width={logo.width}
+                height={38}
+                className="h-7 sm:h-9 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300"
+              />
+            </div>
+          ))}
+
+          {/* Second duplicate set for seamless infinite loop */}
+          {brandLogos.map((logo, idx) => (
+            <div key={`brand-2-${idx}`} className="flex-shrink-0 flex items-center justify-center px-4">
+              <Image
+                src={logo.src}
+                alt={logo.name}
+                width={logo.width}
+                height={38}
+                className="h-7 sm:h-9 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300"
+              />
+            </div>
+          ))}
+
+          {/* Third duplicate set for ultra-wide displays */}
+          {brandLogos.map((logo, idx) => (
+            <div key={`brand-3-${idx}`} className="flex-shrink-0 flex items-center justify-center px-4">
+              <Image
+                src={logo.src}
+                alt={logo.name}
+                width={logo.width}
+                height={38}
+                className="h-7 sm:h-9 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

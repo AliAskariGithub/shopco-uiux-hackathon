@@ -1,101 +1,34 @@
-import Image from "next/image";
+import React from "react";
 import Link from "next/link";
-import { Button } from "./ui/button";
+import { getOnSaleProducts } from "@/data/products";
+import ProductCard from "@/components/ProductCard";
 
 const OnSale = () => {
-  const products = [
-    {
-      id: "1",
-      name: "Viscose blend shirt",
-      ratestar: "★★★★☆",
-      rating: 4.5,
-      price: "$100",
-      fakeprice: "$190",
-      discount: "-40%",
-      image: "/images/shirt11.png",
-    },
-    {
-      id: "2",
-      name: "Mock Neck Zipper Sweatshirt",
-      ratestar: "★★★☆☆",
-      rating: 3.5,
-      price: "$150",
-      fakeprice: "$180",
-      discount: "-20%",
-      image: "/images/shirt12.png",
-    },
-    {
-      id: "3",
-      name: "One life Graphic T-shirt",
-      ratestar: "★★★★☆",
-      rating: 4.5,
-      price: "$260",
-      fakeprice: "$300",
-      discount: "-40%",
-      image: "/images/shirt10.png",
-    },
-    {
-      id: "4",
-      name: "Basic Skinny Jeans",
-      ratestar: "★★★★☆",
-      rating: 4.5,
-      price: "$160",
-      fakeprice: "$190",
-      discount: "-30%",
-      image: "/images/pent4.png",
-    },
-  ];
+  const saleProducts = getOnSaleProducts().slice(0, 4);
 
   return (
-    <div
-      id="onsale"
-      className="container flex flex-col items-center justify-center p-6 mx-auto mb-10 space-y-16"
-    >
-      <h1 className="mb-4 text-4xl text-center text-black font-bold-1">
-        ON SALE
-      </h1>
+    <section id="onsale" className="py-12 sm:py-16 border-b border-zinc-100">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-bold-1 text-center text-black uppercase tracking-tight mb-8 sm:mb-12">
+          On Sale
+        </h2>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="flex flex-col items-center justify-center p-1 transition-shadow duration-300 bg-white rounded shadow-lg jus hover:shadow-xl"
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {saleProducts.map((product, index) => (
+            <ProductCard key={product.id} product={product} priority={index < 2} />
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-8 sm:mt-12">
+          <Link
+            href="/Product?filter=on-sale"
+            className="btn-animated px-12 py-3.5 border border-zinc-300 text-zinc-800 font-bold text-sm rounded-full hover:bg-black hover:text-white hover:border-black active:scale-98 transition duration-200"
           >
-            <Link href={`/Product/Product${product.id}`}>
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={300}
-                height={300}
-                className="object-cover w-full h-40 rounded-md"
-              />
-              <h2 className="mt-4 text-xl font-semibold text-black/80 line-clamp-1">
-                {product.name}
-              </h2>
-              <p className="flex items-center justify-start gap-2 text-2xl text-yellow-400">
-                {product.ratestar}{" "}
-                <span className="text-xs text-black"> {product.rating}/5</span>
-              </p>
-              <div className="flex items-center justify-between">
-                <p className="flex items-center justify-between gap-2 font-medium justify-betw text-black/60">
-                  {product.price}{" "}
-                  <span className="text-xs line-through text-black/50">
-                    {product.fakeprice}
-                  </span>{" "}
-                </p>
-                <span className="text-xs text-right text-red-500">
-                  {product.discount}
-                </span>
-              </div>
-            </Link>{" "}
-          </div>
-        ))}
+            View All
+          </Link>
+        </div>
       </div>
-
-      <Button variant={"secondary"} className="px-10 py-2 rounded ">
-        View All
-      </Button>
-    </div>
+    </section>
   );
 };
 

@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['via.placeholder.com', 's3-alpha-sig.figma.com'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
       },
+    ],
+  },
 };
-        
-    
+
 export default nextConfig;
